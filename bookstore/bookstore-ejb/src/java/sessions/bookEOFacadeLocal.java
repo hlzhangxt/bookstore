@@ -5,6 +5,7 @@
 package sessions;
 
 import ejb.bookEO;
+import exceptions.BookStoreException;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -15,18 +16,24 @@ import javax.ejb.Local;
 @Local
 public interface bookEOFacadeLocal {
 
-    void create(bookEO bookEO);
+    bookEO create (bookEO bookEO) throws BookStoreException;
+   
+    bookEO edit(bookEO bookEO) throws BookStoreException;
 
-    void edit(bookEO bookEO);
-
-    void remove(bookEO bookEO);
+    void remove(bookEO bookEO) throws BookStoreException;
 
     bookEO find(Object id);
 
     List<bookEO> findAll();
 
     List<bookEO> findRange(int[] range);
+    
+    List<bookEO> findByCategory(String category) throws BookStoreException;
 
     int count();
+    
+   
+    
+    
     
 }

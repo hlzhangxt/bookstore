@@ -5,6 +5,7 @@
 package sessions;
 
 import ejb.CustomerEO;
+import exceptions.BookStoreException;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -15,11 +16,11 @@ import javax.ejb.Local;
 @Local
 public interface CustomerEOFacadeLocal {
 
-    void create(CustomerEO customerEO);
+    CustomerEO create(CustomerEO customerEO) throws BookStoreException;
 
-    void edit(CustomerEO customerEO);
+    CustomerEO edit(CustomerEO customerEO) throws BookStoreException;
 
-    void remove(CustomerEO customerEO);
+    void remove(CustomerEO customerEO) throws BookStoreException;
 
     CustomerEO find(Object id);
 
@@ -28,5 +29,7 @@ public interface CustomerEOFacadeLocal {
     List<CustomerEO> findRange(int[] range);
 
     int count();
+    
+    CustomerEO findCustomer(String login, String password) throws BookStoreException;
     
 }

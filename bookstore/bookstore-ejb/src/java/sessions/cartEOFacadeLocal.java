@@ -5,6 +5,7 @@
 package sessions;
 
 import ejb.cartEO;
+import exceptions.BookStoreException;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -15,11 +16,11 @@ import javax.ejb.Local;
 @Local
 public interface cartEOFacadeLocal {
 
-    void create(cartEO cartEO);
+    cartEO create(cartEO cartEO) throws BookStoreException;
 
-    void edit(cartEO cartEO);
+    cartEO edit(cartEO cartEO) throws BookStoreException;
 
-    void remove(cartEO cartEO);
+    void remove(cartEO cartEO) throws BookStoreException;
 
     cartEO find(Object id);
 
@@ -28,5 +29,15 @@ public interface cartEOFacadeLocal {
     List<cartEO> findRange(int[] range);
 
     int count();
+    
+    cartEO addItem(String login, String categoryName, String bookName,
+            double price, int count) throws BookStoreException;
+    
+    public cartEO setItem(String login, String categoryName, String bookName,
+            double price, int count) throws BookStoreException;
+    
+    cartEO findCart(String login) throws BookStoreException ;
+    
+    public cartEO payCart(cartEO cartEO) throws BookStoreException;
     
 }

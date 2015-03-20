@@ -5,6 +5,7 @@
 package sessions;
 
 import ejb.CategoryEO;
+import exceptions.BookStoreException;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -15,11 +16,11 @@ import javax.ejb.Local;
 @Local
 public interface CategoryEOFacadeLocal {
 
-    void create(CategoryEO categoryEO);
+    CategoryEO create(CategoryEO categoryEO) throws BookStoreException;
 
-    void edit(CategoryEO categoryEO);
+    CategoryEO edit(CategoryEO categoryEO) throws BookStoreException;
 
-    void remove(CategoryEO categoryEO);
+    void remove(CategoryEO categoryEO) throws BookStoreException;
 
     CategoryEO find(Object id);
 
@@ -28,5 +29,9 @@ public interface CategoryEOFacadeLocal {
     List<CategoryEO> findRange(int[] range);
 
     int count();
+    
+    public CategoryEO findCategory(String name) throws BookStoreException;
+
+ 
     
 }

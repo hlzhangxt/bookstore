@@ -27,4 +27,13 @@ public class CartItemEOFacade extends AbstractFacade<CartItemEO> implements Cart
         super(CartItemEO.class);
     }
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

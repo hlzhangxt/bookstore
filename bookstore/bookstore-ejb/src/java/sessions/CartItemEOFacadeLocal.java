@@ -5,6 +5,7 @@
 package sessions;
 
 import ejb.CartItemEO;
+import exceptions.BookStoreException;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -15,11 +16,11 @@ import javax.ejb.Local;
 @Local
 public interface CartItemEOFacadeLocal {
 
-    void create(CartItemEO cartItemEO);
+    CartItemEO create(CartItemEO cartItemEO) throws BookStoreException;
 
-    void edit(CartItemEO cartItemEO);
+    CartItemEO edit(CartItemEO cartItemEO) throws BookStoreException;
 
-    void remove(CartItemEO cartItemEO);
+    void remove(CartItemEO cartItemEO) throws BookStoreException;
 
     CartItemEO find(Object id);
 

@@ -4,6 +4,7 @@
  */
 package sessions;
 
+import exceptions.BookStoreException;
 import java.util.List;
 import javax.persistence.EntityManager;
 
@@ -20,15 +21,17 @@ public abstract class AbstractFacade<T> {
 
     protected abstract EntityManager getEntityManager();
 
-    public void create(T entity) {
+    public T create(T entity) throws BookStoreException{
         getEntityManager().persist(entity);
+        return entity;
     }
 
-    public void edit(T entity) {
+    public T edit(T entity) throws BookStoreException{
         getEntityManager().merge(entity);
+        return entity;
     }
 
-    public void remove(T entity) {
+    public void remove(T entity)  throws BookStoreException{
         getEntityManager().remove(getEntityManager().merge(entity));
     }
 
