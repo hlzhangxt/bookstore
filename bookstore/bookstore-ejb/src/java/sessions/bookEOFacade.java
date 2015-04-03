@@ -10,6 +10,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import utilities.StringUtil;
 
 /**
  *
@@ -60,18 +61,21 @@ public class bookEOFacade extends AbstractFacade<bookEO> implements bookEOFacade
         getEntityManager().merge(entity);
         return entity;
     }
-    
-    
+
     @Override
     @SuppressWarnings("unchecked")
-    public List<bookEO> findByCategory(String category) throws BookStoreException {
-        
-        return em.createQuery("SELECT b FROM bookEO b WHERE b.category.cate_name = :name ")
-				.setParameter("name", category).getResultList();
-        
-        
-        
-        
+    public List<bookEO> findByCategory(int category) throws BookStoreException {
+
+
+        if (category == -1) {
+            return em.createQuery("SELECT b FROM bookEO b").getResultList();
+        } else {
+            return em.createQuery("SELECT b FROM bookEO b WHERE b.category.cate_id = :id ")
+                    .setParameter("id", category).getResultList();
+        }
+
+
+
+
     }
-    
 }

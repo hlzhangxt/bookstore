@@ -7,28 +7,29 @@ package actions;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.inject.Inject;
 import ejb.CategoryEO;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import sessions.CategoryEOFacade;
+import sessions.CategoryEOFacadeLocal;
 
 /**
  *
  * @author Administrator
  */
 public class BaseActionSupport extends ActionSupport {
+    CategoryEOFacadeLocal categoryEOFacade = lookupCategoryEOFacadeLocal();
 
     protected String action;
     protected String title;
     protected String message;
-    
     protected CategoryEO rootCategoryEO;
     
-    @Inject CategoryEOFacade bean;
-
     public BaseActionSupport() {
     }
 
+    @Override
     public String execute() throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
@@ -62,28 +63,24 @@ public class BaseActionSupport extends ActionSupport {
             rootCategoryEO = new CategoryEO();
             rootCategoryEO.setCate_id(0);
             rootCategoryEO.setCate_name("All");
-            rootCategoryEO.getSubCategories().addAll(getCategoryEOList());
+            rootCategoryEO.getSubCategories().addAll(categoryEOFacade.getRootCategoryEOList());
         }
 
 
         return rootCategoryEO;
     }
 
-    public List<CategoryEO> getCategoryEOList() {
-
-        try {
-           // return BOClient.lookupICategory().list(
-           //         " from CategoryEO c where c.parent_id = null ");
-           return bean.findAll();
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return new ArrayList<CategoryEO>();
-    }
-
     public void setRootCategoryEO(CategoryEO rootCategoryEO) {
         this.rootCategoryEO = rootCategoryEO;
+    }
+
+    private CategoryEOFacadeLocal lookupCategoryEOFacadeLocal() {
+        try {
+            Context c = new InitialContext();
+            return (CategoryEOFacadeLocal) c.lookup("java:global/bookstore/bookstore-ejb/CategoryEOFacade!sessions.CategoryEOFacadeLocal");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
     }
 }

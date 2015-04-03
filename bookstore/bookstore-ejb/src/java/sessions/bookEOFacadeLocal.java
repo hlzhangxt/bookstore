@@ -28,7 +28,7 @@ public interface bookEOFacadeLocal {
 
     List<bookEO> findRange(int[] range);
     
-    List<bookEO> findByCategory(String category) throws BookStoreException;
+    List<bookEO> findByCategory(int category) throws BookStoreException;
 
     int count();
     

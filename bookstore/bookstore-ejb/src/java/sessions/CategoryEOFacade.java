@@ -6,6 +6,7 @@ package sessions;
 
 import ejb.CategoryEO;
 import exceptions.BookStoreException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -92,4 +93,21 @@ public class CategoryEOFacade extends AbstractFacade<CategoryEO> implements Cate
 
         return catagoryEO;
     }
+
+    public List<CategoryEO> getRootCategoryEOList() {
+        try {
+            List<CategoryEO> list = em.createQuery(
+                    "select c from CategoryEO c where c.parent = null ").getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return new ArrayList<CategoryEO>();
+
+
+
+    }
+    
+   
+    
 }

@@ -31,6 +31,8 @@ public interface CategoryEOFacadeLocal {
     int count();
     
     public CategoryEO findCategory(String name) throws BookStoreException;
+    
+    public List<CategoryEO> getRootCategoryEOList();
 
  
     
