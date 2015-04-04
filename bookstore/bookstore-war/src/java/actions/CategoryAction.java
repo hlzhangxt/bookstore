@@ -90,7 +90,7 @@ public class CategoryAction extends BaseActionSupport {
 
         if (parent != null) {
             try {
-                parent = categoryEOFacade.find(parent.getCate_id());
+                parent = categoryEOFacade.find(parent.getCate_name());
                 if (parent != null) {
                     categoryEOFacade.remove(parent);
                 }

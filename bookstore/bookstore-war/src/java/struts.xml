@@ -6,4 +6,52 @@
  
 <struts>
     <!-- Add your configuration elements here -->
+    
+    <package name="main" extends="tiles-default">
+
+		<!--interceptors>
+			<interceptor name="authentication"
+				class="com.helloweenvsfei.struts2.interceptor.AuthenticationInterceptor">
+			</interceptor>
+		</interceptors-->
+
+		<global-results>
+			<result name="login">/login.jsp</result>
+			<result name="success">/success.jsp</result>
+			<result name="register">/register.jsp</result>
+		</global-results>
+
+		<action name="customer"
+			class="actions.customerAction">
+		</action>
+
+		<action name="category"
+			class="actions.CategoryAction">
+			<result name="input">/addCategory.jsp</result>
+			<result name="add">/addCategory.jsp</result>
+			<result name="list">/listCategory.jsp</result>
+			<result name="success">/categorySuccess.jsp</result>
+		</action>
+
+		<action name="book"
+			class="action.BookAction">
+			<result name="input">/addBook.jsp</result>
+			<result name="add">/addBook.jsp</result>
+			<result name="buy">/buyBook.jsp</result>
+			<result name="list">/listBook.jsp</result>
+			<result name="success">/bookSuccess.jsp</result>
+			<result name="buySuccess">/bookBuySuccess.jsp</result>
+		</action>
+
+		<action name="cart"
+			class="actions.CartAction">
+			<result name="input">/addCart.jsp</result>
+			<result name="add">/addCart.jsp</result>
+			<result name="list">/listCart.jsp</result>
+			<result name="success">/cartSuccess.jsp</result>
+		</action>
+
+	</package>
+
+    
 </struts>
