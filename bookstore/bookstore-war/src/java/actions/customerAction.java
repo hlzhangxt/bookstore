@@ -52,6 +52,30 @@ public class customerAction extends BaseActionSupport {
 
     }
 
+    public CustomerEOFacadeLocal getCustomerEOFacade() {
+        return customerEOFacade;
+    }
+
+    public void setCustomerEOFacade(CustomerEOFacadeLocal customerEOFacade) {
+        this.customerEOFacade = customerEOFacade;
+    }
+
+    public CustomerEO getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(CustomerEO customer) {
+        this.customer = customer;
+    }
+
+    public String getConfPass() {
+        return confPass;
+    }
+
+    public void setConfPass(String confPass) {
+        this.confPass = confPass;
+    }
+
     public String register() {
 
         setTitle("Customer Registration");
@@ -93,6 +117,7 @@ public class customerAction extends BaseActionSupport {
         setTitle("Customer Login");
 
         if (customer == null) {
+            setMessage("Customer information is null");
             return LOGIN;
         }
         if (StringUtil.isNull(customer.getLogin_name())
@@ -106,7 +131,7 @@ public class customerAction extends BaseActionSupport {
                     customer.getLogin_pass());
 
             if (cust == null) {
-                setMessage("Wrong login name or password");
+                addActionMessage("Wrong login name or password");
                 return LOGIN;
             } else {
                 HttpSession session = ServletActionContext.getRequest()

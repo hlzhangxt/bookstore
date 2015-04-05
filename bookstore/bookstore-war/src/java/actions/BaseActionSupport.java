@@ -83,4 +83,14 @@ public class BaseActionSupport extends ActionSupport {
             throw new RuntimeException(ne);
         }
     }
+
+    public CategoryEOFacadeLocal getCategoryEOFacade() {
+        return categoryEOFacade;
+    }
+
+    public void setCategoryEOFacade(CategoryEOFacadeLocal categoryEOFacade) {
+        this.categoryEOFacade = categoryEOFacade;
+    }
+    
+    
 }

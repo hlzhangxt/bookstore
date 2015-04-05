@@ -1,8 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%@ taglib uri="/struts-tags" prefix="struts"%>
-<%@ taglib uri="/struts-dojo-tags" prefix="sx" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%@taglib uri="/struts-tags" prefix="struts" %>
+<!--%@ taglib uri="/struts-dojo-tags" prefix="sx" %-->
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>

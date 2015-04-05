@@ -176,4 +176,21 @@ public class CategoryAction extends BaseActionSupport {
             throw new RuntimeException(ne);
         }
     }
+
+    public bookEOFacadeLocal getBookEOFacade() {
+        return bookEOFacade;
+    }
+
+    public void setBookEOFacade(bookEOFacadeLocal bookEOFacade) {
+        this.bookEOFacade = bookEOFacade;
+    }
+
+    public CategoryEOFacadeLocal getCategoryEOFacade() {
+        return categoryEOFacade;
+    }
+
+    public void setCategoryEOFacade(CategoryEOFacadeLocal categoryEOFacade) {
+        this.categoryEOFacade = categoryEOFacade;
+    }
+    
 }

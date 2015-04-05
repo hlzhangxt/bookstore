@@ -94,4 +94,21 @@ public class CartAction extends BaseActionSupport {
             throw new RuntimeException(ne);
         }
     }
+
+    public cartEOFacadeLocal getCartEOFacade() {
+        return cartEOFacade;
+    }
+
+    public void setCartEOFacade(cartEOFacadeLocal cartEOFacade) {
+        this.cartEOFacade = cartEOFacade;
+    }
+
+    public cartEO getCart() {
+        return cart;
+    }
+
+    public void setCart(cartEO cart) {
+        this.cart = cart;
+    }
+    
 }

@@ -1,21 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="struts"%>
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-	
-<tiles:insertTemplate template="/template.jsp">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Registration</title>
+    </head>
+    <body>		
+        <h4>Registration</h4>
 
-	<tiles:putAttribute name="content">
-	
-		<h4>Registration</h4>
-  
-	  	<struts:form action="user">
-	  		<struts:hidden name="action" value="register"></struts:hidden>
-	  		<struts:textfield name="customer.login_name" label="Account"></struts:textfield>
-	  		<struts:password name="customer.login_pass" label="Password"></struts:password>
-	  		<struts:password name="confPass" label="Password Again"></struts:password>
-	  		<struts:submit value="Register" cssClass="button"></struts:submit>
-	  	</struts:form>
-	  	
-	</tiles:putAttribute>
-	
-</tiles:insertTemplate>
+        <form action="customer">
+            <input type="hidden" name="action" value="register"></input>
+            <input type="text" name="customer.login_name" label="Account"></input>
+            <input type="password" name="customer.login_pass" label="Password"></input>
+            <input type="password" name="customer.confPass" label="Password Again"></input>
+            <input type="submit" value="Register" cssClass="button"></input>
+            <form>
+
+                </body>
+                </html>

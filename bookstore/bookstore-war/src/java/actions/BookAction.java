@@ -190,4 +190,30 @@ public class BookAction extends BaseActionSupport {
             throw new RuntimeException(ne);
         }
     }
+
+    public CategoryEOFacadeLocal getCategoryEOFacade() {
+        return categoryEOFacade;
+    }
+
+    public void setCategoryEOFacade(CategoryEOFacadeLocal categoryEOFacade) {
+        this.categoryEOFacade = categoryEOFacade;
+    }
+
+    public cartEOFacadeLocal getCartEOFacade() {
+        return cartEOFacade;
+    }
+
+    public void setCartEOFacade(cartEOFacadeLocal cartEOFacade) {
+        this.cartEOFacade = cartEOFacade;
+    }
+
+    public bookEOFacadeLocal getBookEOFacade() {
+        return bookEOFacade;
+    }
+
+    public void setBookEOFacade(bookEOFacadeLocal bookEOFacade) {
+        this.bookEOFacade = bookEOFacade;
+    }
+    
+    
 }
