@@ -127,10 +127,13 @@ public class BookAction extends BaseActionSupport {
 
             return "buySuccess";
         } catch (Exception e) {
-            e.printStackTrace();
-            setMessage(e.getMessage());
+           setMessage(e.toString());
+         // setMessage("Errors when add books in the cart!");
+           // e.printStackTrace();
+            
+            return ERROR;
         }
-        return BUY;
+     //   return BUY;
     }
 
     public String delete() {

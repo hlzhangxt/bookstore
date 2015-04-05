@@ -27,26 +27,21 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "categories")
 public class CategoryEO implements Serializable {
+
     private static final long serialVersionUID = 1L;
-       @Id
-	@Column(name = "cate_id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer cate_id;
-	
-	@Column(name = "cate_name")
-	private String cate_name;
-	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "parent_id")
-	private CategoryEO parent;
-	
-		
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "parent")
-	private Set<CategoryEO> subCategories = new HashSet<CategoryEO>();
-	
-	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
-	private List<bookEO> books = new ArrayList<bookEO>();
+    @Id
+    @Column(name = "cate_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer cate_id;
+    @Column(name = "cate_name")
+    private String cate_name;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "parent_id")
+    private CategoryEO parent;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "parent")
+    private Set<CategoryEO> subCategories = new HashSet<CategoryEO>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
+    private List<bookEO> books = new ArrayList<bookEO>();
 
     public Integer getCate_id() {
         return cate_id;
@@ -87,7 +82,4 @@ public class CategoryEO implements Serializable {
     public void setBooks(List<bookEO> books) {
         this.books = books;
     }
-
-    
-    
 }

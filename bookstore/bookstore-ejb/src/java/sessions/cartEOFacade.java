@@ -60,8 +60,9 @@ public class cartEOFacade extends AbstractFacade<cartEO> implements cartEOFacade
             cartItemEO.setCate_name(categoryName);
             cartItemEO.setBook_name(bookName);
             cartItemEO.setBook_price(price);
-
+            
             cartEO.getCartItems().add(cartItemEO);
+            
         }
 
         return em.merge(cartEO);
@@ -95,7 +96,7 @@ public class cartEOFacade extends AbstractFacade<cartEO> implements cartEOFacade
             cartItemEO.setCate_name(categoryName);
             cartItemEO.setBook_name(bookName);
             cartItemEO.setBook_price(price);
-
+         //   em.persist(cartItemEO);
             cartEO.getCartItems().add(cartItemEO);
         }
 
@@ -106,10 +107,11 @@ public class cartEOFacade extends AbstractFacade<cartEO> implements cartEOFacade
     @Override
     public cartEO findCart(String login) throws BookStoreException {
 
-        List<cartEO> cartList = em.createQuery(" SELECT c FROM CartEO c where c.login_name = :name and c.isPayed = false ")
+        try{
+        List<cartEO> cartList = em.createQuery(" SELECT c FROM cartEO c where c.login_name = :name and c.isPaid = false ")
                 .setParameter("name", login).getResultList();
 
-        if (!cartList.isEmpty()) {
+        if (cartList.size()>0) {
             return cartList.get(0);
         }
 
@@ -120,7 +122,14 @@ public class cartEOFacade extends AbstractFacade<cartEO> implements cartEOFacade
         cartEO.setUser(null);
 
         em.persist(cartEO);
-        return cartEO;
+         return cartEO;
+        }catch(Exception e)
+        {
+            throw (new BookStoreException(e.toString()));
+            
+            
+        }
+       
     }
 
     @Override

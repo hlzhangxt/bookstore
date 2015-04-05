@@ -26,6 +26,8 @@ public class BaseActionSupport extends ActionSupport {
     protected String message;
     protected CategoryEO rootCategoryEO;
     
+    protected final String LISTROOT = "root";
+    
     public BaseActionSupport() {
     }
 
@@ -61,7 +63,7 @@ public class BaseActionSupport extends ActionSupport {
     public CategoryEO getRootCategoryEO() {
         if (rootCategoryEO == null) {
             rootCategoryEO = new CategoryEO();
-            rootCategoryEO.setCate_id(0);
+            rootCategoryEO.setCate_id(-1);
             rootCategoryEO.setCate_name("All");
             rootCategoryEO.getSubCategories().addAll(categoryEOFacade.getRootCategoryEOList());
         }

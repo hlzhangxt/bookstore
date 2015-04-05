@@ -15,6 +15,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class CartItemEOFacade extends AbstractFacade<CartItemEO> implements CartItemEOFacadeLocal {
+
     @PersistenceContext(unitName = "bookstore-ejbPU")
     private EntityManager em;
 
@@ -26,14 +27,4 @@ public class CartItemEOFacade extends AbstractFacade<CartItemEO> implements Cart
     public CartItemEOFacade() {
         super(CartItemEO.class);
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }

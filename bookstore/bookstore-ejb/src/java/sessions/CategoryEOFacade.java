@@ -97,7 +97,8 @@ public class CategoryEOFacade extends AbstractFacade<CategoryEO> implements Cate
     public List<CategoryEO> getRootCategoryEOList() {
         try {
             List<CategoryEO> list = em.createQuery(
-                    "select c from CategoryEO c where c.parent = null ").getResultList();
+                    "select c from CategoryEO c where c.parent = null").getResultList();
+            return list;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -107,7 +108,4 @@ public class CategoryEOFacade extends AbstractFacade<CategoryEO> implements Cate
 
 
     }
-    
-   
-    
 }

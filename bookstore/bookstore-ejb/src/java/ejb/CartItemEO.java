@@ -24,33 +24,26 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "cart_items")
 public class CartItemEO implements Serializable {
-    private static final long serialVersionUID = 1L;
-        @Id
-	@Column(name = "item_id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer item_id;
-		
 
-	@Column(name = "cate_name")
-	private String cate_name;
-	
-	@Column(name = "book_name")
-	private String book_name;
-	
-	@Column(name = "count")
-	private Integer count;
-	
-	@Column(name = "book_price")
-	private Double book_price;
-	
-	@ManyToOne
-	@JoinColumn(name = "cart_id")
-	private cartEO cart;
-	
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "item_date")
-	private Date item_date;
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Column(name = "item_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer item_id;
+    @Column(name = "cate_name")
+    private String cate_name;
+    @Column(name = "book_name")
+    private String book_name;
+    @Column(name = "count")
+    private Integer count;
+    @Column(name = "book_price")
+    private Double book_price;
+    @ManyToOne
+    @JoinColumn(name = "cart_id")
+    private cartEO cart;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "item_date")
+    private Date item_date;
 
     public Integer getItem_id() {
         return item_id;
@@ -107,10 +100,4 @@ public class CartItemEO implements Serializable {
     public void setItem_date(Date item_date) {
         this.item_date = item_date;
     }
-	
-
-   
-
-    
-    
 }

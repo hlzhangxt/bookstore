@@ -19,38 +19,31 @@ import javax.persistence.Table;
  * @author Administrator
  */
 @Entity
-@Table(name = "books")
+@Table(name = "book")
 public class bookEO implements Serializable {
+
     private static final long serialVersionUID = 1L;
-        @Id
-	@Column(name = "book_id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer book_id;
-	
-	
-	@Column(name = "book_name")
-	private String book_name;
-	
-	
-	@Column(name = "book_price")
-	private double book_price;
-	
-	
-	public CategoryEO getCategory() {
-		return category;
-	}
-	public void setCategory(CategoryEO category) {
-		this.category = category;
-	}
+    @Id
+    @Column(name = "book_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer book_id;
+    @Column(name = "book_name")
+    private String book_name;
+    @Column(name = "book_price")
+    private double book_price;
 
-	
-	@Column(name = "book_author")
-	private String book_author;
+    public CategoryEO getCategory() {
+        return category;
+    }
 
-
-	@ManyToOne
-	@JoinColumn(name = "cate_id")
-	private CategoryEO category;
+    public void setCategory(CategoryEO category) {
+        this.category = category;
+    }
+    @Column(name = "book_author")
+    private String book_author;
+    @ManyToOne
+    @JoinColumn(name = "cate_id")
+    private CategoryEO category;
 
     public Integer getBook_id() {
         return book_id;
@@ -83,7 +76,4 @@ public class bookEO implements Serializable {
     public void setBook_author(String book_author) {
         this.book_author = book_author;
     }
-	
-
-   
 }

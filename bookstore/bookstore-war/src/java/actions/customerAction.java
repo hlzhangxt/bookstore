@@ -131,7 +131,7 @@ public class customerAction extends BaseActionSupport {
                     customer.getLogin_pass());
 
             if (cust == null) {
-                addActionMessage("Wrong login name or password");
+                setMessage("Wrong login name or password");
                 return LOGIN;
             } else {
                 HttpSession session = ServletActionContext.getRequest()

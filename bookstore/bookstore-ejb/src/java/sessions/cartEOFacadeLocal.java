@@ -29,15 +29,14 @@ public interface cartEOFacadeLocal {
     List<cartEO> findRange(int[] range);
 
     int count();
-    
+
     cartEO addItem(String login, String categoryName, String bookName,
             double price, int count) throws BookStoreException;
-    
+
     public cartEO setItem(String login, String categoryName, String bookName,
             double price, int count) throws BookStoreException;
-    
-    cartEO findCart(String login) throws BookStoreException ;
-    
+
+    cartEO findCart(String login) throws BookStoreException;
+
     public cartEO payCart(cartEO cartEO) throws BookStoreException;
-    
 }

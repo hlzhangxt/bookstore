@@ -29,7 +29,6 @@ public interface CustomerEOFacadeLocal {
     List<CustomerEO> findRange(int[] range);
 
     int count();
-    
+
     CustomerEO findCustomer(String login, String password) throws BookStoreException;
-    
 }

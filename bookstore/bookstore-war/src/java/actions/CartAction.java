@@ -41,6 +41,7 @@ public class CartAction extends BaseActionSupport {
             return LOGIN;
         }
 
+               
         if (PAY.equals(action)) {
             return pay();
         }
@@ -62,7 +63,7 @@ public class CartAction extends BaseActionSupport {
         return LIST;
     }
 
-    public cartEO getCartEO() {
+    public cartEO getCart() {
 
         if (cart == null) {
 
@@ -74,6 +75,7 @@ public class CartAction extends BaseActionSupport {
                 cart = cartEOFacade.findCart(customer.getLogin_name());
             } catch (Exception e) {
                 setMessage(e.getMessage());
+                
             }
 
         }
@@ -81,7 +83,7 @@ public class CartAction extends BaseActionSupport {
         return cart;
     }
 
-    public void setCartEO(cartEO cart) {
+    public void setCart(cartEO cart) {
         this.cart = cart;
     }
 
@@ -103,12 +105,6 @@ public class CartAction extends BaseActionSupport {
         this.cartEOFacade = cartEOFacade;
     }
 
-    public cartEO getCart() {
-        return cart;
-    }
-
-    public void setCart(cartEO cart) {
-        this.cart = cart;
-    }
+  
     
 }

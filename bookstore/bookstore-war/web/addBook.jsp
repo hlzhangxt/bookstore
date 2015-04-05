@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="struts"%>
-<!--%@ taglib uri="http://jakarta.apache.org/struts/tags-tiles" prefix="tiles"%-->
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-	
-<tiles:insertTemplate template="/template.jsp" flush="true">
-	<tiles:putAttribute name="content">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Category</title>
+    </head>
+    <body
 
 		<h4>
 		Current Category：
-		<a href="<struts:url action="category" includeParams="none" />?parent.id=<struts:property value="category.cate_id" />"><struts:property value="category.cate_name" /></a>
+		<a href="<struts:url action="category" includeParams="none" />?parent.cate_id=<struts:property value="category.cate_id" />"><struts:property value="category.cate_name" /></a>
 		</h4>
 		
 		<div style="color: red; ">
@@ -24,5 +26,5 @@
 			<struts:submit value="Submit" cssClass="button"></struts:submit>
 		</struts:form>
 					
-	</tiles:putAttribute>
-</tiles:insertTemplate>
+  </body>
+</html>

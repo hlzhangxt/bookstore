@@ -4,6 +4,7 @@
  */
 package actions;
 
+import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import ejb.CategoryEO;
 import ejb.bookEO;
@@ -28,6 +29,9 @@ public class CategoryAction extends BaseActionSupport {
     public static final String ADD = "add";
     public static final String DELETE = "delete";
     public static final String LIST = "list";
+    
+    public static final String ROOT = "root";
+    
     private CategoryEO parent;
     private CategoryEO category;
     private List<bookEO> bookList;
@@ -36,15 +40,19 @@ public class CategoryAction extends BaseActionSupport {
     }
 
     public String execute() throws Exception {
+        if (action == null) return list();
+        
         switch (action) {
             case ADD:
                 return add();
             case DELETE:
                 return delete();
+            
+            case ROOT:
+                return LISTROOT;
+
             default:
                 return list();
-
-
 
         }
 
@@ -60,7 +68,7 @@ public class CategoryAction extends BaseActionSupport {
             } catch (Exception e) {
                 e.printStackTrace();
                 parent = null;
-            }
+              }
         }
 
         if (category == null) {
@@ -77,32 +85,37 @@ public class CategoryAction extends BaseActionSupport {
         try {
             categoryEOFacade.create(category);
             setMessage(category.getCate_name() + " successfully saved");
-            return SUCCESS;
+            
         } catch (Exception e) {
             setMessage(e.getMessage());
             e.printStackTrace();
+            return ERROR;
         }
 
-        return ADD;
+        return SUCCESS;
     }
 
     public String delete() {
 
         if (parent != null) {
             try {
-                parent = categoryEOFacade.find(parent.getCate_name());
+                parent = categoryEOFacade.find(parent.getCate_id());
                 if (parent != null) {
                     categoryEOFacade.remove(parent);
+                    setTitle("Successfully deleted");
+                    setMessage("The Category " + parent.getCate_name() + " is successfuly deleted");
+                    return SUCCESS;
                 }
             } catch (Exception e) {
                 setMessage(e.getMessage());
+                return ERROR;
+                
             }
         }
 
-        setTitle("Successfully deleted");
-        setMessage("The Category " + parent.getCate_name() + " is successfuly deleted");
-
-        return SUCCESS;
+        
+       return SUCCESS;
+        
     }
 
     public String list() {
@@ -137,7 +150,7 @@ public class CategoryAction extends BaseActionSupport {
     }
 
     public List<bookEO> getBookList() {
-        if (bookList == null) {
+       // if (bookList == null) {
             try {
                 if (parent == null) {
                     bookList = bookEOFacade.findByCategory(-1);
@@ -147,8 +160,9 @@ public class CategoryAction extends BaseActionSupport {
             } catch (Exception e) {
                 setMessage(e.getMessage());
                 e.printStackTrace();
+                return null;
             }
-        }
+      //  }
 
         return bookList;
     }

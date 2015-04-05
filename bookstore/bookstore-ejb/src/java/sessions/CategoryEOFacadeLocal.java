@@ -6,6 +6,7 @@ package sessions;
 
 import ejb.CategoryEO;
 import exceptions.BookStoreException;
+import java.util.HashSet;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -29,11 +30,8 @@ public interface CategoryEOFacadeLocal {
     List<CategoryEO> findRange(int[] range);
 
     int count();
-    
-    public CategoryEO findCategory(String name) throws BookStoreException;
-    
-    public List<CategoryEO> getRootCategoryEOList();
 
- 
-    
+    public CategoryEO findCategory(String name) throws BookStoreException;
+
+    public List<CategoryEO> getRootCategoryEOList();
 }

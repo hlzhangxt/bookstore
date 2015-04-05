@@ -16,8 +16,8 @@ import javax.ejb.Local;
 @Local
 public interface bookEOFacadeLocal {
 
-    bookEO create (bookEO bookEO) throws BookStoreException;
-   
+    bookEO create(bookEO bookEO) throws BookStoreException;
+
     bookEO edit(bookEO bookEO) throws BookStoreException;
 
     void remove(bookEO bookEO) throws BookStoreException;
@@ -27,13 +27,8 @@ public interface bookEOFacadeLocal {
     List<bookEO> findAll();
 
     List<bookEO> findRange(int[] range);
-    
+
     List<bookEO> findByCategory(int category) throws BookStoreException;
 
     int count();
-    
-   
-    
-    
-    
 }

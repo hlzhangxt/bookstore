@@ -29,29 +29,22 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "carts")
 public class cartEO implements Serializable {
+
     private static final long serialVersionUID = 1L;
-        @Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer cart_id;
-	
-	@ManyToOne
-	@JoinColumn(name = "customer_id")
-	private CustomerEO user;
-	
-	
-	@Column(name = "login_name")
-	private String login_name;
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date cart_date;
-	
-	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "cart")
-	private Set<CartItemEO> cartItems = new HashSet<CartItemEO>();
-	
-	
-	@Column(name = "isPaid")
-	private Boolean isPaid;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer cart_id;
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private CustomerEO user;
+    @Column(name = "login_name")
+    private String login_name;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date cart_date;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "cart")
+    private Set<CartItemEO> cartItems = new HashSet<CartItemEO>();
+    @Column(name = "isPaid")
+    private boolean isPaid;
 
     public Integer getCart_id() {
         return cart_id;
@@ -100,7 +93,4 @@ public class cartEO implements Serializable {
     public void setIsPaid(Boolean isPaid) {
         this.isPaid = isPaid;
     }
-
-  
-    
 }

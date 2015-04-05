@@ -1,10 +1,47 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="struts"%>
-<!--%@ taglib uri="http://jakarta.apache.org/struts/tags-tiles" prefix="tiles"%-->
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>	
-<tiles:insertTemplate template="/template.jsp" flush="true">
-    <tiles:putAttribute name="content">
 
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Category</title>
+        
+        <style>
+			body, table, th, td { font-size: 12px;  }
+			.table {
+				border: 1px solid #000000; 
+				border-collapse: collapse; 
+				width: 100%; 
+			}
+			.table th {
+				border: 1px solid #000000; 
+				border-collapse: collapse; 
+				background: #EEEEEE;
+			}
+			.table td {
+				border: 1px solid #000000; 
+				border-collapse: collapse; 
+			}
+			.button {
+				color:#fff;
+				font-weight:bold;
+				font-size: 11px; 
+				text-align:center;
+				padding:.17em 0 .2em .17em;
+				border-style:solid;
+				border-width:1px;
+				border-color:#9cf #159 #159 #9cf;
+				background:#69c url(images/bg-btn-blue.gif) repeat-x;
+			}
+		</style>
+        
+        
+    </head>
+    <body>
+        <div style="color: red; ">
+            <struts:property value="message" />
+        </div>
         <h4>
             Current Category：
             <struts:property value="parent.cate_name" />
@@ -15,13 +52,13 @@
         <struts:if test="parent != null">
             <input type=button class=button onclick="location = '<struts:url action="book" includeParams="none" />?action=add&category.cate_id=<struts:property value="parent.cate_id" />'" value="Add Book" />
             <input type=button class=button onclick="if (!confirm('Are you sure to delete it？'))
-                            return;
-                        location = '<struts:url action="category" includeParams="none" />?action=delete&parent.cate_id=<struts:property value="parent.cate_id" />';" value="Delete The Category" />
+                    return;
+                location = '<struts:url action="category" includeParams="none" />?action=delete&parent.cate_id=<struts:property value="parent.cate_id" />';" value="Delete The Category" />
         </struts:if>
         <br/>
         <br/>
 
-        <table class="table">
+        <table class="table" style="margin-top: 10px; border: 1px solid #660F66; border-spacing: 5px;">
             <tr>
                 <th>ID</th>
                 <th>Category</th>
@@ -31,14 +68,16 @@
             </tr>
             <struts:iterator value="bookList">
                 <tr>
-                    <td><struts:property value="id"/> </td>
+                    <td><struts:property value="book_id"/> </td>
                     <td><a href="<struts:url action="category" includeParams="none" />?parent.cate_id=<struts:property value="category.cate_id"/>"><struts:property value="category.cate_name"/></a></td>
-                    <td><struts:property value="name"/> </td>
-                    <td>￥<struts:property value="price"/> </td>
-                    <td><a href="<struts:url action="book?action=buy" includeParams="none" />&book.book_id=<struts:property value="book_id"/>">Buy</a> </td>
+                    <td><struts:property value="book_name"/> </td>
+                    <td>$<struts:property value="book_price"/> </td>
+                    <td><a href="<struts:url action="book" includeParams="none" />?action=buy&book.book_id=<struts:property value="book_id"/>">Buy</a> </td>
                 </tr>
             </struts:iterator>
         </table>
 
-    </tiles:putAttribute>
-</tiles:insertTemplate>
+    
+
+</body>
+</html>

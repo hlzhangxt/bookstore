@@ -8,7 +8,9 @@
         <title>Login</title>
     </head>
     <body>	
-
+       <div style="color: red; ">
+			<struts:property value="message" />
+		</div>
         <h4>Login</h4>
 
         <s:form action="customer">
@@ -18,8 +20,6 @@
             <s:submit value="Submit"></s:submit>
         </s:form>
 
-        <s:if test="hasActionMessages()">
-            <s:actionmessage/>
-        </s:if>
+       
     </body>
 </html>

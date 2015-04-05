@@ -2,12 +2,14 @@
 <%@ taglib uri="/struts-tags" prefix="struts"%>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+       
+        <title>Success</title>
     </head>
     <body>
 
-
+<div style="color: red; ">
+			<struts:property value="message" />
+		</div>
 
         <div align="center">
             <br/>

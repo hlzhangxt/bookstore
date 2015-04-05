@@ -8,10 +8,11 @@
     <package name="example"  extends="struts-default">
         
         <global-results>
-		<result name="login">/login.jsp</result>
-		<result name="success">/success.jsp</result>
-		<result name="register">/register.jsp</result>
-	</global-results>
+            <result name="login">/login.jsp</result>
+            <result name="success">/success.jsp</result>
+            <result name="register">/register.jsp</result>
+             <result name="error">/error.jsp</result>
+        </global-results>
         
         
         <action name="hello" class="actions.HelloAction">
@@ -22,7 +23,32 @@
             
         </action>
         
-        
+        <action name="category"
+                 class="actions.CategoryAction">
+            <result name="input">/addCategory.jsp</result>
+            <result name="add">/addCategory.jsp</result>
+            <result name="list">/listCategory.jsp</result>
+            <result name="success">/categorySuccess.jsp</result>
+             <result name="root">/index.jsp</result>
+            
+        </action>
+
+        <action name="book"
+                        class="actions.BookAction">
+            <result name="input">/addBook.jsp</result>
+            <result name="add">/addBook.jsp</result>
+            <result name="buy">/buyBook.jsp</result>
+            <result name="success">/bookSuccess.jsp</result>
+            <result name="buySuccess">/bookBuySuccess.jsp</result>
+        </action>
+
+        <action name="cart"
+                        class="actions.CartAction">
+            <result name="input">/addCart.jsp</result>
+            <result name="add">/addCart.jsp</result>
+            <result name="list">/listCart.jsp</result>
+            <result name="success">/cartSuccess.jsp</result>
+        </action>
         
         
     </package>

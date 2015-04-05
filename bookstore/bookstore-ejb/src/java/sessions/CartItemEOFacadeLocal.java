@@ -29,5 +29,4 @@ public interface CartItemEOFacadeLocal {
     List<CartItemEO> findRange(int[] range);
 
     int count();
-    
 }

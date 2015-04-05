@@ -19,17 +19,16 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "customers")
 public class CustomerEO implements Serializable {
+
     private static final long serialVersionUID = 1L;
-        @Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "customer_id")
-	private Integer customer_id;
-	
-	@Column(name = "login_name")
-	private String login_name;
-	
-	@Column(name = "login_pass")
-	private String login_pass;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "customer_id")
+    private Integer customer_id;
+    @Column(name = "login_name")
+    private String login_name;
+    @Column(name = "login_pass")
+    private String login_pass;
 
     public Integer getCustomer_id() {
         return customer_id;
@@ -54,7 +53,4 @@ public class CustomerEO implements Serializable {
     public void setLogin_pass(String login_pass) {
         this.login_pass = login_pass;
     }
-
-    
-    
 }
