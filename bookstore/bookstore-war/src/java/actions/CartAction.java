@@ -52,7 +52,7 @@ public class CartAction extends BaseActionSupport {
     public String pay() {
 
         try {
-            cartEOFacade.payCart(getCartEO());
+            cartEOFacade.payCart(getCart());
             setMessage("Thanks！");
             return SUCCESS;
         } catch (Exception e) {

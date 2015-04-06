@@ -7,9 +7,9 @@
         <title>Book</title>
     </head>
     <body
-<div style="color: red; ">
-			<struts:property value="message" />
-		</div>
+        <div style="color: red; ">
+            <struts:property value="message" />
+        </div>
         <div align="center">
             <br/>
             <br/>

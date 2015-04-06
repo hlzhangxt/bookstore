@@ -4,8 +4,9 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
     "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html style="height:auto">
     <head>
+        <sx:head/>
         <title>Online Bookstore</title>
         <meta http-equiv="pragma" content="no-cache">
         <meta http-equiv="cache-control" content="no-cache">
@@ -13,7 +14,7 @@
         <meta http-equiv="keywords" content="book,online,store">
         <meta http-equiv="description" content="A Simple Online Book Stroe">
         <!--struts:head theme="ajax" debug="false" /-->
-        <struts:head theme="xhtml" /><sx:head parseContent="true" />
+        
         
         <style>
 			body, table, th, td { font-size: 16px;  }
@@ -45,37 +46,38 @@
 		</style>
         
     </head>
-    <body>
+    <body style="height:auto">
         <table width="100%" style="background: #EFFF0E; border: 1px solid #660F66; border-spacing: 5px;">
             <tr>
                 <td>
                     <img src="images/books.png" width="60" height="60">
-                    <a href="<struts:url action="category" includeParams="none"></struts:url>">Welcome</a>
+                    <a href="<struts:url action="category" includeParams="none"></struts:url>"  target="content">Welcome</a>
                     
                     </td>
                     <td align="right">
                     <struts:if test="%{#session.customer == null}">
-                        <a href="<struts:url action="customer?action=login" includeParams="none"></struts:url>">Log in</a> | 
-                        <a href="<struts:url action="customer?action=register" includeParams="none"></struts:url>">Register</a> |
-                        <a href="<struts:url action="category" includeParams="none"></struts:url>">Enter The Store</a> |
-                        <a href="<struts:url action="cart" includeParams="none"></struts:url>">My Cart</a>
+                        <a href="<struts:url action="customer?action=login" includeParams="none"></struts:url>"  target="content">Log in</a> | 
+                        <a href="<struts:url action="customer?action=register" includeParams="none"></struts:url>"  target="content">Register</a> |
+                        <a href="<struts:url action="category" includeParams="none"></struts:url>"  target="content">Enter The Store</a> |
+                        <a href="<struts:url action="cart" includeParams="none"></struts:url>"  target="content">My Cart</a>
                     </struts:if>
                     <struts:else>
                         Welcome，<struts:property value="#session.customer.login_name" /> 
-                        <a href="<struts:url action="customer?action=logout" includeParams="none"></struts:url>">Log out</a> | 
-                        <a href="<struts:url action="category" includeParams="none"></struts:url>">Enter The Store</a> |
-                        <a href="<struts:url action="cart" includeParams="none"></struts:url>">My Cart</a>
+                        <a href="<struts:url action="customer?action=logout" includeParams="none"></struts:url>"  target="content">Log out</a> | 
+                        <a href="<struts:url action="category" includeParams="none"></struts:url>"  target="content">Enter The Store</a> |
+                        <a href="<struts:url action="cart" includeParams="none"></struts:url>"  target="content">My Cart</a>
                     </struts:else>
                 </td>
             </tr>
         </table>
 
-        <table width="100%" style="margin-top: 10px; border: 1px solid #660F66; border-spacing: 5px;">
-            <tr>
-                <td valign="top" width="200">
+        <table width="100%" height="100%" margin-top="10px" border="1px solid #660F66" border-spacing="5px">
+            <tr height="100%">
+                <td  width="20%" height="100%" tex-align="top">
+                    
                     <sx:tree id="root" rootNode="rootCategoryEO"
                                  nodeTitleProperty="cate_name" nodeIdProperty="cate_id"
-                                 childCollectionProperty="subCategories" onclick="location='ss'" />
+                                 childCollectionProperty="subCategories"  onclick="location='ss'"/>
 
                     <script type="text/javascript">
                         document.body.onload = function() {
@@ -95,12 +97,20 @@
                         function nodeSelected() {
                             var node = dojo.widget.byId('root').selector.selectedNode;
                             // alert(node.widgetId + '\r\n' + node.title); 
-                            location = "<struts:url action="category" includeParams="none" />?parent.cate_id=" + node.widgetId;
+                            //location
+                            document.getElementById("content").src = "<struts:url action="category" includeParams="none" />?parent.cate_id=" + node.widgetId;
                         }
                     </script>
 
                     <input type=button value="View the Category" onclick="nodeSelected()" class="button" />
 
+                </td>
+                <td width ="80%" height="100%">
+                   
+                    <Iframe id="content"  width="100%" height="100%"  algin="center"></IFRAME> 
+                   
+                    
+                    
                 </td>
                 <td valign="top" style="padding: 10px; ">
 
