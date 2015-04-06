@@ -76,9 +76,9 @@
 
     <div align=center>
         <br /><br />
-        <input type=button class=button value="Pay" onclick="if (!confirm('Are you sure to pay？'))
+        <!--input type=button class=button value="Pay" onclick="if (!confirm('Are you sure to pay？'))
                         return;
-                    location = '<struts:url action="cart" includeParams="none" />?action=pay'" disabled="true" />
+                    location = '<struts:url action="cart" includeParams="none" />?action=pay'" disabled="true" /-->
         <input type=button class=button value="Continue Shopping &gt;&gt;" onclick="location = '<struts:url action="category" includeParams="none" />?action=list'" />
     </div>
 
