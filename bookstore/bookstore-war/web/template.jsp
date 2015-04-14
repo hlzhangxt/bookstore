@@ -80,7 +80,7 @@
 
 					<script type="text/javascript">
 						document.body.onload = function() {
-							var root = dojo.widget.byId('0'); 
+							var root = dojo.widget.byId('-1'); 
 							expand(root); 
 						}
 						function expand(node) {

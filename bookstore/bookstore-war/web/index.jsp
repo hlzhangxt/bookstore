@@ -75,15 +75,24 @@
             <tr height="100%">
                 <td  width="20%" height="100%" tex-align="top">
                     
-                    <sx:tree id="root" rootNode="rootCategoryEO"
+                <sx:tree id="root" rootNode="rootCategoryEO"
                                  nodeTitleProperty="cate_name" nodeIdProperty="cate_id"
-                                 childCollectionProperty="subCategories"  onclick="location='ss'"/>
+                                 childCollectionProperty="subCategories" /> <!--  onclick="location='ss'"/-->
 
                     <script type="text/javascript">
-                        document.body.onload = function() {
-                            var root = dojo.widget.byId('root');
-                            expand(root);
+                 
+                       document.body.onload = autoexpand;
+                        function autoexpand(){
+                         var node = dojo.widget.byId('-1')
+                         
+                         
+                         expand(node);
+                         
+                         var s = dojo.widget.byId('root').selector;
+                           
+                         dojo.event.connect(s, 'select', 'nodeSelected');        
                         }
+                        
                         function expand(node) {
                             node.expand();
                             var children = node.children;
@@ -91,18 +100,19 @@
                                 var child = children[i];
                                 expand(child);
                             }
-                          dojo.event.connect(node, 'onselect', nodeSelected);;
+                            
+                       //   dojo.event.connect(node, 'onselect', nodeSelected);
                          
                         }
-                        function nodeSelected() {
-                            var node = dojo.widget.byId('root').selector.selectedNode;
-                            // alert(node.widgetId + '\r\n' + node.title); 
-                            //location
-                            document.getElementById("content").src = "<struts:url action="category" includeParams="none" />?parent.cate_id=" + node.widgetId;
+                        function nodeSelected(node) {
+                           // var node = dojo.widget.byId('root').selector.selectedNode;
+                           
+                            document.getElementById("content").src = "<struts:url action="category" includeParams="none" />?parent.cate_id=" + node.source.widgetId;
                         }
                     </script>
 
-                    <input type=button value="View the Category" onclick="nodeSelected()" class="button" />
+                    <!--input type=button value="View the Category" onclick="nodeSelected()" class="button" /-->
+                   
 
                 </td>
                 <td width ="80%" height="100%">
