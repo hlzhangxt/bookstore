@@ -5,13 +5,14 @@
     "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
         <title>Success Category Management</title>
     </head>
     <body>
         <div style="color: red; ">
             <struts:property value="message" />
         </div>
-        <div align="center">
+        <!--div align="center">
             <br />
             <br />
             <input type=button class=button
@@ -21,10 +22,10 @@
             <input type="button" value="View The Cart" class=button
                    onclick="location = '<struts:url action="cart" includeParams="none"></struts:url>'" />
 
-                   <input type=button value="Enter The Store &gt;&gt;" class=button
-                          onclick="location = '<struts:url action="category" includeParams="none" />?action=list'" />
+                   <!--input type=button value="Enter The Store &gt;&gt;" class=button
+                          onclick="location = '<struts:url action="category" includeParams="none" />?action=list'" /-->
 
-        </div>
+        </div-->
 
     </body>
 </html>

@@ -56,7 +56,7 @@
     </ejb-local-ref>
     
     <welcome-file-list>
-        <welcome-file>category.action</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
        
     </welcome-file-list>
        

@@ -27,6 +27,7 @@ public class customerAction extends BaseActionSupport {
     public final static String LGIN = "login";
     private CustomerEO customer;
     private String confPass;
+  //  private boolean isAdmin = false;
 
     public customerAction() {
     }
@@ -156,7 +157,7 @@ public class customerAction extends BaseActionSupport {
 
         setMessage("Log out successfully");
 
-        return login();
+        return SUCCESS;
     }
 
     private CustomerEOFacadeLocal lookupCustomerEOFacadeLocal() {
@@ -168,4 +169,16 @@ public class customerAction extends BaseActionSupport {
             throw new RuntimeException(ne);
         }
     }
+/*
+    public boolean isIsAdmin() {
+        return customer.getLogin_name().equals("admin");
+    }
+
+    public void setIsAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
+    }
+    
+    */
+    
+    
 }

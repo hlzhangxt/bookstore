@@ -5,11 +5,12 @@
 <html>
     <head>
         <title>Registration</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
         <div style="color: red; ">
-			<struts:property value="message" />
-		</div>
+            <struts:property value="message" />
+        </div>
         <h4>Registration</h4>
 
         <s:form action="customer">
@@ -18,8 +19,8 @@
             <s:password name="customer.login_pass" label="Password"></s:password>
             <s:password name="confPass" label="Password Again"></s:password>
             <s:submit value="Register" cssClass="button"></s:submit>
-            </s:form>
+        </s:form>
 
-            
-          </body>
-   </html>
+
+    </body>
+</html>

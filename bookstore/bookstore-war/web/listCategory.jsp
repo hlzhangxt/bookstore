@@ -6,8 +6,8 @@
 <html>
     <head>
         <title>Category</title>
-        
-        <style>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <!--style>
 			body, table, th, td { font-size: 12px;  }
 			.table {
 				border: 1px solid #000000; 
@@ -34,7 +34,7 @@
 				border-color:#9cf #159 #159 #9cf;
 				background:#69c url(images/bg-btn-blue.gif) repeat-x;
 			}
-		</style>
+		</style-->
         
         
     </head>
@@ -46,7 +46,7 @@
             Current Category：
             <struts:property value="parent.cate_name" />
         </h4>
-
+        <struts:if test="%{#session.customer.login_name == 'admin'}">
         <input type=button class=button onclick="location = '<struts:url action="category" includeParams="none" />?action=add&parent.cate_id=<struts:property value="parent.cate_id" />'" value="Add Category" />
 
         <struts:if test="parent != null">
@@ -54,6 +54,7 @@
             <input type=button class=button onclick="if (!confirm('Are you sure to delete it？'))
                     return;
                 location = '<struts:url action="category" includeParams="none" />?action=delete&parent.cate_id=<struts:property value="parent.cate_id" />';" value="Delete The Category" />
+        </struts:if>
         </struts:if>
         <br/>
         <br/>
@@ -72,7 +73,9 @@
                     <td><a href="<struts:url action="category" includeParams="none" />?parent.cate_id=<struts:property value="category.cate_id"/>"><struts:property value="category.cate_name"/></a></td>
                     <td><struts:property value="book_name"/> </td>
                     <td>$<struts:property value="book_price"/> </td>
-                    <td><a href="<struts:url action="book" includeParams="none" />?action=buy&book.book_id=<struts:property value="book_id"/>">Buy</a> </td>
+                    
+                    <td><struts:if test="%{#session.customer.login_name != 'admin'}"><a href="<struts:url action="book" includeParams="none" />?action=buy&book.book_id=<struts:property value="book_id"/>">Buy</a> </struts:if></td>
+                    
                 </tr>
             </struts:iterator>
         </table>

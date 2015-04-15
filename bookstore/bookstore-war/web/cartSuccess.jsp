@@ -4,8 +4,9 @@
     "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
         <title>My Cart(Paid)</title>
-        <style>
+        <!--style>
             body, table, th, td { font-size: 12px;  }
             .table {
                 border: 1px solid #000000; 
@@ -32,7 +33,7 @@
                 border-color:#9cf #159 #159 #9cf;
                 background:#69c url(images/bg-btn-blue.gif) repeat-x;
             }
-        </style>
+        </style-->
     </head>
     <body>
         <div style="color: red; ">
@@ -69,8 +70,8 @@
         <tr>
             <th>Total</th>
             <th colspan="3">&nbsp;</th>
-            <th>${ petCount }</th>
-            <th>$${ priceCount }</th>
+            <th>${bookCount}</th>
+            <th>$${priceCount}</th>
         </tr>
     </table>
 
@@ -79,7 +80,7 @@
         <!--input type=button class=button value="Pay" onclick="if (!confirm('Are you sure to pay？'))
                         return;
                     location = '<struts:url action="cart" includeParams="none" />?action=pay'" disabled="true" /-->
-        <input type=button class=button value="Continue Shopping &gt;&gt;" onclick="location = '<struts:url action="category" includeParams="none" />?action=list'" />
+        <!--input type=button class=button value="Continue Shopping &gt;&gt;" onclick="location = '<struts:url action="category" includeParams="none" />?action=list'" /-->
     </div>
 
 </body>

@@ -7,8 +7,8 @@
 <html>
     <head>
         <title>My Cart</title>
-
-        <style>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <!--style>
             body, table, th, td { font-size: 12px;  }
             .table {
                 border: 1px solid #000000; 
@@ -35,7 +35,7 @@
                 border-color:#9cf #159 #159 #9cf;
                 background:#69c url(images/bg-btn-blue.gif) repeat-x;
             }
-        </style>
+        </style-->
 
 
 
@@ -76,18 +76,20 @@
             <tr>
                 <th>Total</th>
                 <th colspan="3">&nbsp;</th>
-                <th>${ petCount }</th>
-                <th>$${ priceCount }</th>
+                <th>${bookCount}</th>
+                <th>$${priceCount}</th>
                 <th>&nbsp;</th>
             </tr>
         </table>
 
         <div align=center>
             <br /><br />
+            <struts:if test="%{#request.priceCount>0}">
             <input type=button class=button value="Pay" onclick="if (!confirm('Are you sure to pay now？'))
                         return;
                     location = '<struts:url action="cart" includeParams="none" />?action=pay'" />
-            <input type=button class=button value="Continue Shopping &gt;&gt;" onclick="location = '<struts:url action="category" includeParams="none" />?action=list'" />
+            </struts:if>
+            <!--input type=button class=button value="Continue Shopping &gt;&gt;" onclick="location = '<struts:url action="category" includeParams="none" />?action=list'" /-->
         </div>
 
     </body>

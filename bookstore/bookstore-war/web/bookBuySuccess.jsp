@@ -4,6 +4,7 @@
     "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
         <title>Success</title>
     </head>
     <body
@@ -17,7 +18,7 @@
 
 			<input type="button" class="button" value="View the Cart" onclick="location='<struts:url action="cart" includeParams="none"></struts:url>'" />
 			
-			<input type=button class="button" value="Continue Shopping &gt;&gt;" onclick="location='<struts:url action="category" includeParams="none" />?action=list'" />
+			<!--input type=button class="button" value="Continue Shopping &gt;&gt;" onclick="location='<struts:url action="category" includeParams="none" />?action=list'" /-->
 			
 		</div>
 

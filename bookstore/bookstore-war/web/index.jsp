@@ -1,166 +1,87 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="struts" uri="/struts-tags"%>
-<%@ taglib prefix="sx" uri="/struts-dojo-tags"%>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
-    "http://www.w3.org/TR/html4/loose.dtd">
-<html style="height:auto">
+<%@ taglib uri="/struts-tags" prefix="struts"%>
+<html>
     <head>
-        <sx:head/>
-        <title>Online Bookstore</title>
-        <meta http-equiv="pragma" content="no-cache">
-        <meta http-equiv="cache-control" content="no-cache">
-        <meta http-equiv="expires" content="0">    
-        <meta http-equiv="keywords" content="book,online,store">
-        <meta http-equiv="description" content="A Simple Online Book Stroe">
-        <!--struts:head theme="ajax" debug="false" /-->
+       <link rel="stylesheet" type="text/css" href="style.css">
+        <title>Welcome</title>
         
         
-        <style>
-			body, table, th, td { font-size: 16px;  }
-			.table {
-				border: 1px solid #000000; 
-				border-collapse: collapse; 
-				width: 100%; 
-			}
-			.table th {
-				border: 1px solid #000000; 
-				border-collapse: collapse; 
-				background: #EEEEEE;
-			}
-			.table td {
-				border: 1px solid #000000; 
-				border-collapse: collapse; 
-			}
-			.button {
-				color:#fff;
-				font-weight:bold;
-				font-size: 11px; 
-				text-align:center;
-				padding:.17em 0 .2em .17em;
-				border-style:solid;
-				border-width:1px;
-				border-color:#9cf #159 #159 #9cf;
-				background:#69c url(images/bg-btn-blue.gif) repeat-x;
-			}
-		</style>
+        <!--style>
+            body, table, th, td { font-size: 12px;  }
+            .table {
+                border: 1px solid #000000; 
+                border-collapse: collapse; 
+                width: 100%; 
+            }
+            .table th {
+                border: 1px solid #000000; 
+                border-collapse: collapse; 
+                background: #EEEEEE;
+            }
+            .table td {
+                border: 1px solid #000000; 
+                border-collapse: collapse; 
+            }
+            .button {
+                color:#fff;
+                font-weight:bold;
+                font-size: 11px; 
+                text-align:center;
+                padding:.17em 0 .2em .17em;
+                border-style:solid;
+                border-width:1px;
+                border-color:#9cf #159 #159 #9cf;
+                background:#69c url(images/bg-btn-blue.gif) repeat-x;
+            }
+        </style-->
+       
+     <script type="text/javascript">
+       function Redirect (url) {
+       var ua        = navigator.userAgent.toLowerCase(),
+        isIE      = ua.indexOf('msie') !== -1,
+        version   = parseInt(ua.substr(4, 2), 10);
+
+    // Internet Explorer 8 and lower
+      if (isIE && version < 9) {
+        var link = document.createElement('a');
+        link.href = url;
+        document.body.appendChild(link);
+        link.click();
+     }
+
+    // All other browsers
+      else { window.location.href = url; }
+     }    
+     
+     Redirect("category.action?action=root");
+     
+     </script>>    
+        
+        
+        
         
     </head>
-    <body style="height:auto">
-        <table width="100%" style="background: #EFFF0E; border: 1px solid #660F66; border-spacing: 5px;">
-            <tr>
-                <td>
-                    <img src="images/books.png" width="60" height="60">
-                    <a href="<struts:url action="category" includeParams="none"></struts:url>"  target="content">Welcome</a>
-                    
-                    </td>
-                    <td align="right">
-                    <struts:if test="%{#session.customer == null}">
-                        <a href="<struts:url action="customer?action=login" includeParams="none"></struts:url>"  target="content">Log in</a> | 
-                        <a href="<struts:url action="customer?action=register" includeParams="none"></struts:url>"  target="content">Register</a> |
-                        <a href="<struts:url action="category" includeParams="none"></struts:url>"  target="content">Enter The Store</a> |
-                        <a href="<struts:url action="cart" includeParams="none"></struts:url>"  target="content">My Cart</a>
-                    </struts:if>
-                    <struts:else>
-                        Welcome，<struts:property value="#session.customer.login_name" /> 
-                        <a href="<struts:url action="customer?action=logout" includeParams="none"></struts:url>"  target="content">Log out</a> | 
-                        <a href="<struts:url action="category" includeParams="none"></struts:url>"  target="content">Enter The Store</a> |
-                        <a href="<struts:url action="cart" includeParams="none"></struts:url>"  target="content">My Cart</a>
-                    </struts:else>
-                </td>
-            </tr>
-        </table>
+    <!--body>
 
-        <table width="100%" height="100%" margin-top="10px" border="1px solid #660F66" border-spacing="5px">
-            <tr height="100%">
-                <td  width="20%" height="100%" tex-align="top">
-                    
-                <sx:tree id="root" rootNode="rootCategoryEO"
-                                 nodeTitleProperty="cate_name" nodeIdProperty="cate_id"
-                                 childCollectionProperty="subCategories" /> <!--  onclick="location='ss'"/-->
+<div style="color: red; ">
+			<struts:property value="message" />
+</div>
 
-                    <script type="text/javascript">
-                 
-                       document.body.onload = autoexpand;
-                        function autoexpand(){
-                         var node = dojo.widget.byId('-1')
-                         
-                         
-                         expand(node);
-                         
-                         var s = dojo.widget.byId('root').selector;
-                           
-                         dojo.event.connect(s, 'select', 'nodeSelected');        
-                        }
-                        
-                        function expand(node) {
-                            node.expand();
-                            var children = node.children;
-                            for (var i = 0; i < children.length; i++) {
-                                var child = children[i];
-                                expand(child);
-                            }
-                            
-                       //   dojo.event.connect(node, 'onselect', nodeSelected);
-                         
-                        }
-                        function nodeSelected(node) {
-                           // var node = dojo.widget.byId('root').selector.selectedNode;
-                           
-                            document.getElementById("content").src = "<struts:url action="category" includeParams="none" />?parent.cate_id=" + node.source.widgetId;
-                        }
-                    </script>
+        <div align="center">
+            <br/>
+            <br/>
 
-                    <!--input type=button value="View the Category" onclick="nodeSelected()" class="button" /-->
-                   
+            <input type="button" class="button" value="View The Cart" onclick="location = '<struts:url action="cart" includeParams="none"></struts:url>'" />
 
-                </td>
-                <td width ="80%" height="100%">
-                   
-                    <Iframe id="content"  width="100%" height="100%"  algin="center"></IFRAME> 
-                   
-                    
-                    
-                </td>
-                <td valign="top" style="padding: 10px; ">
+                <!--input type=button class="button" value="Enter The Store &gt;&gt;" onclick="location = '<struts:url action="category" includeParams="none" />?action=list'" /-->
 
-                    <struts:if test="%{ message != null && message.length() > 0 }">
-                        <div style="color: red; padding: 10px; background: #FFEEEE; border: 1px solid red; ">
-                            <struts:property value="message" />
-                        </div>
-                    </struts:if>
+        </div>
+            
+            <!--script type="text/javascript">
+                window.location.reload();
+            </script-->
+                
+                
 
-
-
-                </td>
-            </tr>
-        </table>
-
-
-
-    </body>
-
-
-
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</body>
+    </body-->
 </html>
