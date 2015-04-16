@@ -81,7 +81,7 @@ public class CategoryEOFacade extends AbstractFacade<CategoryEO> implements Cate
     public CategoryEO edit(CategoryEO catagoryEO) throws BookStoreException {
 
         List list = em.createQuery(
-                " SELECT c FROM CategoryEO c WHERE c.cate_name = :name AND c.id <> :id ")
+                " SELECT c FROM CategoryEO c WHERE c.cate_name = :name AND c.cate_id <> :id ")
                 .setParameter("name", catagoryEO.getCate_name()).setParameter("id",
                 catagoryEO.getCate_id()).getResultList();
 

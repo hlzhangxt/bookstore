@@ -79,16 +79,99 @@
         <table width="100%" height="100%" margin-top="10px" border="1px solid #660F66" border-spacing="5px">
             <tr height="100%">
                 <td  width="20%"  valign="top" style="padding: 10px; ">
+                   
                     
-                <sx:tree id="root" rootNode="rootCategoryEO"
+                    
+                    <sx:tree id="root" rootNode="rootCategoryEO"
                                  nodeTitleProperty="cate_name" nodeIdProperty="cate_id"
-                                 childCollectionProperty="subCategories" /> <!--  onclick="location='ss'"/-->
+                                 childCollectionProperty="subCategories">
+                    </sx:tree>
+                    
+                    <script type="text/javascript">
+                        
+                        document.body.onload = autoexpand;
+                        function autoexpand(){
+                         var node = dojo.widget.byId('0')
+                         
+                         
+                         expand(node);
+                         
+                         var s = dojo.widget.byId('root').selector;
+                           
+                         dojo.event.connect(s, 'select', 'nodeSelected');        
+                        }
+                        
+                        function expand(node) {
+                            node.expand();
+                            var children = node.children;
+                            for (var i = 0; i < children.length; i++) {
+                                var child = children[i];
+                                expand(child);
+                            }
+                            
+                       //   dojo.event.connect(node, 'onselect', nodeSelected);
+                         
+                        }
+                        function nodeSelected(node) {
+                           // var node = dojo.widget.byId('root').selector.selectedNode;
+                           
+                            document.getElementById("content").src = "<struts:url action="category" includeParams="none" />?parent.cate_id=" + node.source.widgetId;
+                        }
+                    </script> 
+                    
+                 
+                    
+                    
+                    
+                    <!--sx:div id="tree" href="category.action?action=root" executeScripts="true" updateFreq="2000" preload="true"-->   
+                     
+             
+                  
+                   <!--script type="text/javascript">
+                 
+                       document.body.onload = autoexpand;
+                        function autoexpand(){
+                         var node = dojo.widget.byId('0')
+                         
+                         
+                         expand(node);
+                         
+                         var s = dojo.widget.byId('root').selector;
+                           
+                         dojo.event.connect(s, 'select', 'nodeSelected');        
+                        }
+                        
+                        function expand(node) {
+                            node.expand();
+                            var children = node.children;
+                            for (var i = 0; i < children.length; i++) {
+                                var child = children[i];
+                                expand(child);
+                            }
+                            
+                       //   dojo.event.connect(node, 'onselect', nodeSelected);
+                         
+                        }
+                        function nodeSelected(node) {
+                           // var node = dojo.widget.byId('root').selector.selectedNode;
+                           
+                            document.getElementById("content").src = "<struts:url action="category" includeParams="none" />?parent.cate_id=" + node.source.widgetId;
+                        }
+                    </script-->
+                  
+                  
+                  
+                
+                   
+                <!--sx:tree id="root" rootNode="rootCategoryEO"
+                                 nodeTitleProperty="cate_name" nodeIdProperty="cate_id"
+                                 childCollectionProperty="subCategories"   onclick="location='ss'"/>
 
                     <script type="text/javascript">
                  
                        document.body.onload = autoexpand;
                         function autoexpand(){
-                         var node = dojo.widget.byId('-1')
+                         var node = dojo.widget.byId('0')
                          
                          
                          expand(node);

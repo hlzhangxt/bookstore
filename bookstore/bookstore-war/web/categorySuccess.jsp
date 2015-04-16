@@ -7,6 +7,11 @@
     <head>
         <link rel="stylesheet" type="text/css" href="style.css">
         <title>Success Category Management</title>
+        
+        <script language="Javascript">
+    setTimeout("parent.location.reload();",2000);
+</script>
+        
     </head>
     <body>
         <div style="color: red; ">
@@ -27,5 +32,8 @@
 
         </div-->
 
+        
+        
+        
     </body>
 </html>

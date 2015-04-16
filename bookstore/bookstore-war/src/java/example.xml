@@ -30,7 +30,7 @@
             <result name="add">/addCategory.jsp</result>
             <result name="list">/listCategory.jsp</result>
             <result name="success">/categorySuccess.jsp</result>
-             <result name="root">/main.jsp</result>
+            <result name="root">/main.jsp</result>
             
         </action>
 

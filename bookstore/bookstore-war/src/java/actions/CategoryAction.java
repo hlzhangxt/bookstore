@@ -81,9 +81,13 @@ public class CategoryAction extends BaseActionSupport {
         }
 
         category.setParent(parent);
+        parent.getSubCategories().add(category);
 
         try {
-            categoryEOFacade.create(category);
+            category = categoryEOFacade.create(category);
+            parent = categoryEOFacade.edit(parent);
+            
+            
             setMessage(category.getCate_name() + " successfully saved");
             
         } catch (Exception e) {
@@ -101,9 +105,12 @@ public class CategoryAction extends BaseActionSupport {
             try {
                 parent = categoryEOFacade.find(parent.getCate_id());
                 if (parent != null) {
+                    parent.getParent().getSubCategories().remove(parent);
                     categoryEOFacade.remove(parent);
+                                        
                     setTitle("Successfully deleted");
-                    setMessage("The Category " + parent.getCate_name() + " is successfuly deleted");
+                    setMessage("The Category  " + parent.getCate_name() + " is successfuly deleted");
+                    
                     return SUCCESS;
                 }
             } catch (Exception e) {
@@ -153,7 +160,7 @@ public class CategoryAction extends BaseActionSupport {
        // if (bookList == null) {
             try {
                 if (parent == null) {
-                    bookList = bookEOFacade.findByCategory(-1);
+                    bookList = bookEOFacade.findByCategory(0);
                 } else {
                     bookList = bookEOFacade.findByCategory(parent.getCate_id());
                 }

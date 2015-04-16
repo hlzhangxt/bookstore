@@ -23,7 +23,7 @@
                           value="View <struts:property value="category.cate_name" /> List"
                    onclick="location = '<struts:url action="category" includeParams="none"></struts:url>?parent.cate_id=<struts:property value="category.cate_id" />'" />
 
-                   <input type=button class="button" value="Enter The Store &gt;&gt;" onclick="location = '<struts:url action="category" includeParams="none" />?action=list'" />
+                   <!--input type=button class="button" value="Enter The Store &gt;&gt;" onclick="location = '<struts:url action="category" includeParams="none" />?action=list'" /-->
 
         </div>
 

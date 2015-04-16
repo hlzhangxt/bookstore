@@ -81,6 +81,7 @@ public class BookAction extends BaseActionSupport {
         }
 
         book.setCategory(category);
+        category.getBooks().add(book);
 
         try {
             bookEOFacade.create(book);

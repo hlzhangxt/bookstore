@@ -51,9 +51,9 @@
 
         <struts:if test="parent != null">
             <input type=button class=button onclick="location = '<struts:url action="book" includeParams="none" />?action=add&category.cate_id=<struts:property value="parent.cate_id" />'" value="Add Book" />
-            <input type=button class=button onclick="if (!confirm('Are you sure to delete it？'))
+            <!--input type=button class=button onclick="if (!confirm('Are you sure to delete it？'))
                     return;
-                location = '<struts:url action="category" includeParams="none" />?action=delete&parent.cate_id=<struts:property value="parent.cate_id" />';" value="Delete The Category" />
+                location = '<struts:url action="category" includeParams="none" />?action=delete&parent.cate_id=<struts:property value="parent.cate_id" />';" value="Delete The Category" /-->
         </struts:if>
         </struts:if>
         <br/>
